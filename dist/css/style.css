@@ -1,0 +1,325 @@
+:root {/*The :root selector matches the document's root element.
+
+    In HTML, the root element is always the html element.*/
+    --primary-color: #333;/*css variables starts with --*/
+    --secondary-color: #444;
+    --overlay-color: rgba(0, 0, 0, 0.7);/*rgba = rgb alpha which is a transparent color. 0,0,0 is black and 0.7 is opacity*/
+  }
+  
+* {
+    box-sizing: border-box;/*setting to border box so that they dont add width to the element*/
+    margin: 0;
+    padding: 0;
+  }
+ 
+body {
+    font-family: 'Catamaran', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.3;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none; /*to make sure there is no underline on link ig*/
+}
+
+ul {
+  list-style: none;/* no bullet points*/
+}
+
+img { 
+  width: 100%;/*we want the img to take up 100% of the container*/
+}
+
+.container {
+  max-width: 1100px;/*cuz we want this to be responsive 1100 is a common width*/
+  margin: auto;/*magin set to auto so that there is even margin on the left and right*/
+  overflow: hidden;/*overflow set to hidden so that nothing breaks out of its container|| The CSS overflow property controls what happens to content that is too big to fit into an area.*/
+  padding: 0 2rem;/*padding 2 rem on left and right*/
+}
+
+
+.navbar {/*class of navbar*/
+    font-size: 1.2rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+  
+  .navbar .container { /*we dont wanna do grid on the navbar class bc if we do that the contsiner is going to be the grid item. thats not what we want. we want the h1 and ul to be the grid item which is inside the container. so we wanna display grid on the container class*/
+    display: grid;/*An HTML element becomes a grid container when its display property is set to grid*/
+    grid-template-columns: repeat(2, 1fr)/*The grid-template-columns property specifies the number (and the widths) of columns in a grid layout. The fr unit allows you to set the size of a track as a fraction of the free space of the grid container. For example, this will set each item to one third the width of the grid container:
+                                        .container {
+                                        grid-template-columns: 1fr 1fr 1fr;
+                                        }we want two even rows so we'll use fractional units 1fr 1fr*/
+   
+  }
+  
+  .navbar .logo {
+    font-size: 3rem;
+  }
+  
+  .navbar ul {
+    justify-self: flex-end;/*aligned to the right*/
+    display: flex;/*to display these links side by side we will use display flex*/
+    align-items: center;/*this will  centre everything verically. align for perpendicular to x axis i think not sure*/
+    justify-content: center;/*this will centre everything horizontally*/
+  }
+  
+  .navbar .nav a {
+    padding: 0 1rem; /*0 top and bottom, 1rem left and right*/
+  }
+  
+  .navbar a:hover {/*hover on the link chnage*/
+    color: #559;
+  }
+/* Section A*/
+  .section-a {
+    margin: 2rem 0;
+  }
+
+  .section-a .container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3rem; /*The gap CSS property sets the gaps (gutters) between rows and columns*/
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  .section-a .container a{
+    padding: 0 1rem; 
+}
+
+.section-a h1{
+    font-size: 4rem;
+    padding-top: 3rem;
+    color: var(--primary-color);
+  }
+
+  
+.section-a p{
+    margin: 1rem 0;
+  }
+
+/* Section B*/
+
+.section-b {
+    position: relative;/*bc for the overlay we r gonna position that absolute within section b and since section b is its container it needs to be positioned relative*/
+    background: url('../img/mint.jpg') no-repeat bottom center/cover;/*cover: Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges*/
+    height: 600px;
+  }
+
+  .section-b-inner {
+    color: #fff;
+    height: 100%;/*height 100% of its container*/
+    display: flex;
+    flex-direction: column;/*we dont want it to be aligned horizontally but vertically therefore flex direction: column*/
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    max-width: 860px; /*cuz we didnt use a container here so this is kinda the container. we want it to be narrower than the rest of the site; a REGULAR container is 1100px max so we make this 860*/
+    padding: 5rem 0;
+  }
+
+  .section-b h3{
+   font-size: 5rem;
+  }
+
+  .section-b h2{
+    font-size: 3rem;
+    margin-top: 1rem;
+   }
+
+   .section-b p{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+   }
+
+ /*section c*/
+ .section-c .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .section-c .gallery a:first-child {/*we want the link but we want the first one of the link so we use the first child pseudo selector*/
+    /*grid-row-start: 1;
+    grid-row-end:3 ;
+    grid-column-start: 1;
+    grid-column-end:3;*/
+    grid-row:1/3;
+    grid-column: 1/3;
+  }
+
+  .section-c .gallery a:nth-child(2){
+    grid-column: 3/5;/*starts at three ends at +2 ie 5*/
+  }
+
+  .section-c .gallery img, .section-c .gallery a{
+      width: 100%;
+      height: 100%;/*to remove the spacing around the pics*/
+  }
+
+/*Footer*/
+
+.section-footer {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 4rem 0;
+  }
+
+  .section-footer .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+  }
+
+  .section-footer h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-footer h3 {
+    margin-bottom: 0.7rem;
+  }
+  
+  .section-footer a {
+    line-height: 1.9;
+    color: #ccc;
+  }
+
+  .section-footer a > i { /*we want the links and then the i tag or the icon from fonts awesome.com*/
+    color: #555;
+    margin-right: 0.5rem;
+  } 
+ 
+.email-form {
+    width: 100%;
+    display: inline-block;
+    background-color: #555;
+    position: relative;
+    border-radius: 20px;
+    line-height: 0;
+    margin-top: 1rem;
+  }
+
+  .email-form .form-control {
+    display: inline-block;
+    border: 0;
+    outline: 0;
+    font-size: 1rem;
+    color: #ddd;
+    background-color: transparent;
+    font-family: inherit; /*The inherit keyword specifies that a property should inherit its value from its parent element.*/
+    margin: 0;
+    padding: 0 3rem 0 1.5rem;
+    width: 100%;
+    height: 45px;
+    border-radius: 20px;
+  }
+
+  
+.email-form .submit { /*the idea is to move the submit btn over to the right*/
+    display: inline-block;
+    position: absolute;/* we r positioning it absolute within the email form which is positioned relative*/
+    top: 0;/*we r moving it to the top right*/
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background-color: #eee;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    border-radius: 0 20px 20px 0;/*we only want the rounded edges on the right bottom because its gonna be rounded on that side*/
+  }
+  
+  
+  /*Utilities*/
+  .btn { /*not gonna restrct button to section-a just in case we want to use this button in other places therefore a utilities class*/
+    display: inline-block; /*displaying it as inline block as is the case for most buttons so that we can add widths and stuff and so that it doesnt take up the entire line*/
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 30px;/*rounded button*/
+  }
+  
+  .btn:hover {
+    background: var(--secondary-color);
+  }
+  .overlay {
+    position: absolute; /*bc we r positioning it within section b or within wtv wrapper is relative*/
+    top: 0;
+    left: 0;/*so the top left corner idk*/
+    height: 100%;
+    width: 100%; /*so that it covers the entire thing*/
+    background-color: var(--overlay-color);
+  }
+
+/*Media Queries*/
+@media(max-width: 700px){/*means wtv we put in here will only pertain when the screen is 700px or less*/
+        .section-a .container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+      
+
+      .section-a .container div:first-child {
+        order: 2;
+      }
+    
+      .section-a .container div:nth-child(2) {
+        order: -1;
+      }
+
+      .section-a img {
+        width: 80%;
+        margin: auto;
+      }
+      .section-b-inner h2{
+        font-size: 3rem;
+       }
+
+       .section-c .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .section-c .gallery a:first-child {
+        grid-row: 1/1;/* the first pic will only span one row and one column instead of three*/
+        grid-column: 1/1;
+      }
+    
+      .section-c .gallery a:nth-child(2) {
+        grid-column: 2/4;
+        grid-row: 2/2;
+      }
+    
+      .section-c .gallery a:last-child {
+        display: none;
+      }
+
+      .section-footer {
+        padding: 2rem 0;
+      }
+      .section-footer .container {
+        grid-template-columns: 1fr;/*1fr means 1 column. for the grid we r now stacking them, one column everythign on top pf each other rather than 4 columns*/
+        text-align: center;
+      }
+    
+      .section-footer div:nth-child(2),
+      .section-footer div:nth-child(3) {
+        display: none;/*getting rid of the company and blog posts on mobile screens*/
+      }
+    }
+     
